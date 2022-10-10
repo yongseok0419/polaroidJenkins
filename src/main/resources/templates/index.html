@@ -33,13 +33,13 @@
                       
 
 		                  <th:block th:if="${session.isProfile == 0}">
-                        	<div class="profile-img" style="background: url(/img/avatars/1.jpg) no-repeat center; background-size: cover;">
+                        	<div class="profile-img" style="background: url(img/avatars/1.jpg) no-repeat center; background-size: cover;">
 							          </div>
                       </th:block>    
                       <th:block th:unless="${session.isProfile == 0}">
                       
                       <th:block th:if="${session.mpd.profileFileName == null}">
-                      		<div class="profile-img" style="background: url(/img/avatars/1.jpg) no-repeat center; background-size: cover;">
+                      		<div class="profile-img" style="background: url(img/avatars/1.jpg) no-repeat center; background-size: cover;">
 							          </div>
                       </th:block>
                       
