@@ -543,12 +543,12 @@
 
                 //게시글 수정
                 $('#modifyBtn').on("click", function () {
-                  location.href = "/updateForm?post_id=" + post_id;
+                  location.href = "/polaroid/updateForm?post_id=" + post_id;
                 });
 
                 //게시글 삭제
                 $('#removeBtn').on("click", function () {
-                  location.href = "/deletePost?post_id=" + post_id;
+                  location.href = "/polaroid/deletePost?post_id=" + post_id;
                 });
               }
 
