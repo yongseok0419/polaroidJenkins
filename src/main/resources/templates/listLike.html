@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!-- beautify ignore:start -->
+<html xmlns:th="http://www.thymeleaf.org"
+  lang="ko"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-static-path="/"
+  data-template="vertical-menu-template-free"
+>
+
+<th:block th:replace="~{./include :: setContent( ~{:: .wrap} ) }"> 
+ 
+    <div class="wrap">
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    
+    
+            <!-- Content -->
+
+            <div class=" container-xxl flex-grow-1 container-p-y">
+              <div class="row">
+                <div class="row contents-list" id="contents">
+            
+                  <!-- contents-item  start-->
+                  <th:block th:each="post: ${likeLists}">
+                    <div class="col-lg-4 col-md-4 col-4 mb-4">
+                      <div class="card">
+                        <a href="#" type="button" class="" data-bs-toggle="modal" 
+                        data-bs-target="#modalScrollable" th:attr="data-id=${post.post_id}">
+            
+                          <div class="card-body contents-card">
+                            <!-- <span th:style="'background-image:url('+ @{/images/sample-visual01.jpg} +');'"></span> -->
+                            <th:block th:each="upload : ${post.uploads}">
+                              <div class="contents-img" 
+                                th:style="'background:url('+ @{'/upload/'+ ${upload.upload_filepath} + '/' + ${upload.upload_fileuuid} + '_' + ${upload.upload_filename}} +')no-repeat center; background-size: cover;'">
+            
+            
+            
+                                <!--  <img th:src="'/upload/'+ ${upload.upload_filepath} + '/' + ${upload.upload_fileuuid} + '_' + ${upload.upload_filename}" > -->
+                                <!-- img th:src="'/upload/main_' + ${file.uuid} + '_' + ${file.filename}" -->
+                                <!--  th:src="@{../display(r_path=${dto2.r_path}, r_image=${dto2.r_image})}" -->
+                                <div class="hover-box">
+                                  <i class='bx bxs-heart' ><span id="postLikeCount2"></span></i>&nbsp;&nbsp;
+                                  <i class='bx bxs-chat'><span id="replyCount"></span></i>
+                                </div>
+            
+                              </div>
+                            </th:block>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </th:block>
+                  <!-- contents-item  end-->
+                </div>
+              </div>
+            </div>
+            
+          <!-- modals2 start ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+          <div class="modal fade" id="modalScrollable" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                   <div class="modal-header" id="postTitle">
+                     
+                   </div>
+                   <div class="modal-body content-modal">
+   
+                     <div class="img_section">
+                      
+                   <div class="col-md">
+               
+                     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                       <ol class="carousel-indicators">
+                        
+                            <li data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></li>
+                            <li data-bs-target="#carouselExample" data-bs-slide-to="1"></li>
+                            <li data-bs-target="#carouselExample" data-bs-slide-to="2"></li>
+                         
+                       </ol>
+                        <!-- 상세 이미지 조회-->
+                       <div class="carousel-inner" id="postPhoto">           
+                        
+                       </div>
+                       <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
+                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                         <span class="visually-hidden">Previous</span>
+                       </a>
+                       <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
+                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                         <span class="visually-hidden">Next</span>
+                       </a>
+                     </div>
+                   </div>
+                   <!-- Bootstrap crossfade carousel -->
+                   </div>
+   
+                     <div class="detail--right_box">
+   
+                        <!-- 상세 게시글 작성자 조회-->
+                       <header class="top" id="postAccount">     
+   
+                       </header>
+                       
+                      <!-- 게시물 수정/삭제 조건-->
+                      <div class="user-control" id="btnCondition">
+                                        
+                      </div>
+                       
+                       <div class="bottom_icons content-modal">
+                         <div class="left_icons">
+                           <div class="heart_btn" id="postLikeBtn">
+                              <a href="#n">
+                              <i id="heart" class="bx bx-heart"></i> 
+                             </a> 
+                           </div>
+                             <span class="count_likes">
+                                 좋아요 
+                                <span id="postLikeCount">0</span>개 
+                            
+                             </span>
+                             
+                             <div>
+                                 <div class="sprite_share_icon" data-name="share"></div>
+                             </div>
+                         </div>
+   
+                         <div class="right_icon">
+                             <div class="sprite_bookmark_outline" data-name="book-mark"></div>
+                         </div>
+                       </div>
+   
+                     
+
+                            <!-- 댓글 리스트 -->
+                       <section class="scroll_section"  id="commentList">
+                        
+         
+
+                       </section>
+   
+   
+   
+                   </div>
+                   
+
+                   
+                
+                </div>
+                
+                
+                <!-- 댓글 입력 영역 start-->
+                 <div class="replyInsertWrap modal-footer content-modal" id="addForm">
+                    <div class="commit_field">
+                      <input type="text" id="replyContent" placeholder="댓글 등록">
+                    </div>
+                    <button type="button" id="addComment" class="btn btn-primary replyInsert">게시</button>
+                          
+                  </div>
+                  
+                  
+                  <div class="modal-footer content-modal" id="modifyForm" style="display: none;">
+                    <!-- 수정폼 -->
+                   <div class="commit_field">
+                      <input type="text" id="modContent" placeholder="댓글 수정">
+                    </div>
+                    <button type="button" id="ok" class="btn btn-primary">수정</button>
+                  
+                  </div>
+                <!-- 댓글 입력 영역 end-->
+                
+
+                </div>
+                
+              </div>
+            </div>
+          <div class="demo-inline-spacing">
+            <!-- Button trigger modal -->
+            
+           
+          </div>
+
+
+          <!-- modals2 end ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+          
+            <!-- / Content -->
+
+
+   </div>
+

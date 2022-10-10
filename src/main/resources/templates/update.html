@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!-- beautify ignore:start -->
+<html xmlns:th="http://www.thymeleaf.org"
+  lang="ko"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-static-path="/"
+  data-template="vertical-menu-template-free"
+>
+
+ <th:block th:replace="~{./include :: setContent( ~{:: .wrap} ) }"> 
+ 
+    
+    <div class="wrap">
+    
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y contents-upload">
+              
+              <div class="row">
+                <div class="col-md-12">
+                  <form action="updatePost" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="post_id" th:value="${postDto.post_id}">
+                  <div class="card mb-4 filebox preview-image">
+                    <h5 class="card-header">게시글 수정</h5>
+                    <!-- Account -->
+                    <div class="card-body">
+                     
+                       <!-- 메인 이미지(첫번째 파일) start-->
+                      
+                      <div class="d-flex align-items-start align-items-sm-center gap-4">
+                       
+                        <div class="profile-img"> 
+                        
+                          <label class="upload-display" for="upload1">
+                          
+                            <span class="upload-thumb-wrap">
+                            
+                              <img class="upload-thumb" src="/img/add_button.png">
+                            
+                            </span>
+                           
+                          </label>
+                          <!-- <input class="upload-name" value="파일선택" disabled="disabled"> -->
+                          <input type="file" name="file" id="upload1" hidden class="upload-hidden">
+                          
+                        </div>
+                        
+                        <div class="button-wrapper">
+                          <label for="upload1" class="upload-display btn btn-primary me-2 mb-4" tabindex="0">
+                            <span class="d-none d-sm-block"> 업로드</span>
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input type="file" id="upload1" class="account-file-input upload-name upload-hidden" hidden accept="image/png, image/jpeg"/>
+                            
+                          </label>
+                        </div>
+                      </div>
+                       
+                      <!-- 메인 이미지(첫번째 파일) end-->
+                       <!-- 서브 이미지(두번째 파일) start-->
+                       <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <div class="profile-img"> 
+                          <label class="upload-display" for="upload2">
+                            <span class="upload-thumb-wrap">
+                                <img class="upload-thumb" src="/img/add_button.png">
+                            </span>
+                          </label>
+                          <!-- <input class="upload-name" value="파일선택" disabled="disabled"> -->
+                          <input type="file" name="file" id="upload2" hidden class="upload-hidden">
+                          
+                        </div>
+                        <div class="button-wrapper">
+                          <label for="upload2" class="upload-display btn btn-primary me-2 mb-4" tabindex="0">
+                            <span class="d-none d-sm-block"> 업로드</span>
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input type="file" id="upload2" class="account-file-input upload-name upload-hidden" hidden accept="image/png, image/jpeg"/>
+                            
+                          </label>
+                        </div>
+                      </div>
+                      <!-- 서브 이미지(두번째 파일) end-->
+
+                       <!-- 서브 이미지(세번째 파일) start-->
+                       <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <div class="profile-img"> 
+                          <label class="upload-display" for="upload3">
+                            <span class="upload-thumb-wrap">
+                                <img class="upload-thumb" src="/img/add_button.png">
+                            </span>
+                          </label>
+                          <!-- <input class="upload-name" value="파일선택" disabled="disabled"> -->
+                          <input type="file" name="file" id="upload3" hidden class="upload-hidden">
+                          
+                        </div>
+                        <div class="button-wrapper">
+                          <label for="upload3" class="upload-display btn btn-primary me-2 mb-4" tabindex="0">
+                            <span class="d-none d-sm-block"> 업로드</span>
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input type="file" id="upload3" class="account-file-input upload-name upload-hidden" hidden accept="image/png, image/jpeg"/>
+                            
+                          </label>
+                        </div>
+                      </div>
+                      <!-- 서브 이미지(세번째 파일) end-->
+                    </div>
+                    
+                    <hr class="my-0" />
+                    <div class="card-body">
+                      
+                        <div class="row">
+                          <div class="mb-3 col-md-12">
+                            <label id="user-id" class="form-label">제목</label>
+                            <input th:value="${postDto.post_title}"
+                              class="form-control"
+                              type="text"
+                              id="user-cont"
+                              name="post_title"
+                              autofocus
+                              
+                            />
+                          </div>
+                          <!-- <div class="mb-3 col-md-6">
+                            <label for="user-name" class="form-label">위치</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="user-map"
+                              name="user-map"
+                              autofocus
+                             
+                            />
+                          </div> -->
+                          
+                          <div class="mb-12 col-md-12">
+                            <label for="user-id" class="form-label">내용</label>
+                            
+                            <textarea class="form-control" name="post_content" type="text" autofocus >[[${postDto.post_content}]]</textarea>
+                          </div>
+                         
+                        </div>
+                        <div class="mt-2">
+                          <button type="submit" class="btn btn-primary me-2" style="margin-top:20px;">수정</button>
+                          
+                        </div>
+                    </div>
+                    <!-- /Account -->
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            </th:block>
+            <!-- / Content -->
+    
+       <!-- Main JS -->
+       
+       <!-- Main JS -->
+       
+       <script>
+
+       //파일업로드
+
+       $(document).ready(function() {
+
+          var fileTarget = $('.filebox .upload-hidden'); 
+          fileTarget.on('change', function(){ //change이벤트
+          if(window.FileReader){ // modern browser 
+             var filename = $(this)[0].files[0].name; } 
+          else { // old IE 
+             var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+          } // 추출한 파일명 삽입 
+          $(this).siblings('.upload-name').val(filename); });
+
+          var imgTarget = $('.preview-image .upload-hidden'); 
+          imgTarget.on('change', function() { 
+             var parent = $(this).parent(); 
+             // parent.children('.upload-display').remove(); 
+             
+             if(window.FileReader){ //image 파일만 
+                if (!$(this)[0].files[0].type.match(/image\//)) return; 
+
+                var reader = new FileReader(); 
+                reader.onload = function(e){ 
+                   var src = e.target.result; 
+                   // parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"></div></div>'); 
+                   parent.find(".upload-thumb-wrap").children().attr("src", src);
+                } 
+                reader.readAsDataURL($(this)[0].files[0]); 
+             } else { 
+                $(this)[0].select(); 
+                $(this)[0].blur(); 
+                var imgSrc = document.selection.createRange().text; 
+                parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>'); 
+
+                var img = $(this).siblings('.upload-display').find('img'); 
+                img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")"; 
+             } 
+          });
+
+       });
+       </script>
+       
+       
+    <script src="/js/main.js"></script>
+       
+   </div>

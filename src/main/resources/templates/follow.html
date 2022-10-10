@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- beautify ignore:start -->
+<html xmlns:th="http://www.thymeleaf.org"
+  lang="ko"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-static-path="/"
+  data-template="vertical-menu-template-free"
+>
+
+<th:block th:replace="~{./include :: setContent( ~{:: .wrap} ) }"> 
+ 
+ 	<div class="wrap">
+
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              
+
+              <div class="row">
+                <div class="col-md-12">
+                  <ul class="nav nav-pills flex-column flex-md-row mb-3">
+                    <li class="nav-item">
+                      <a class="nav-link" th:href=@{profile}><i class="bx bx-user me-1"></i> 프로필</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                      <a class="nav-link active" th:href=@{follow}
+                        ><i class="bx bx-user-check me-1"></i> 팔로우</a
+                      >
+                    </li>
+                  </ul>
+                  <div class="row">
+
+
+                     <!-- follow-box start -->
+                     <div class="col-md-6 col-12 mb-md-0 mb-4">
+                      <div class="card follow-left">
+                        <h5 class="card-header">팔로워(3)</h5>
+                        <div class="card-body">
+                          <p>나를 팔로우하는 사람들</p>
+                        
+                          <!-- follow-list start -->
+                          <div class="toast-container follow-list">
+
+                            <!-- follow-item start -->
+                            <div class="bs-toast toast fade show follow-item" role="alert" aria-live="assertive" aria-atomic="true">                             
+                              <div class="toast-header">
+                                <a href="index.html">
+                                  <div class="profile-img" style="background: url(/img/avatars/1.jpg) no-repeat center; background-size: cover;">
+                                  </div>
+                                </a>
+                                <div class="me-auto fw-semibold"><a href="index.html">일민수</a></div>
+                              </div>                       
+                            </div>
+                            <!-- follow-item end -->
+
+                            <!-- follow-item start -->
+                            <div class="bs-toast toast fade show follow-item" role="alert" aria-live="assertive" aria-atomic="true">                             
+                              <div class="toast-header">
+                                <a href="index.html">
+                                  <div class="profile-img" style="background: url(/img/avatars/1.jpg) no-repeat center; background-size: cover;">
+                                  </div>
+                                </a>
+                                <div class="me-auto fw-semibold"><a href="index.html">이민수</a></div>
+                              </div>                       
+                            </div>
+                            <!-- follow-item end -->
+                            <!-- follow-item start -->
+                            <div class="bs-toast toast fade show follow-item" role="alert" aria-live="assertive" aria-atomic="true">                             
+                              <div class="toast-header">
+                                <a href="index.html">
+                                  <div class="profile-img" style="background: url(/img/avatars/1.jpg) no-repeat center; background-size: cover;">
+                                  </div>
+                                </a>
+                                <div class="me-auto fw-semibold"><a href="index.html">삼민수</a></div>
+                              </div>                       
+                            </div>
+                            <!-- follow-item end -->
+                            
+                          </div>
+                          <!-- follow-list end -->
+
+                        </div>
+                      
+
+                      </div>
+                    </div>
+                    <!-- follow-box end -->
+
+                    <!-- follow-box start -->
+                    <div class="col-md-6 col-12 mb-md-0 mb-4">
+                      <div class="card follow-right">
+                        <h5 class="card-header">팔로우(3)</h5>
+                        <div class="card-body">
+                          <p>내가 팔로우하고 있는 사람들</p>
+                        
+                          <!-- follow-list start -->
+                          <div class="toast-container follow-list">
+
+                            <!-- follow-item start -->
+                            <div class="bs-toast toast fade show follow-item" role="alert" aria-live="assertive" aria-atomic="true">                             
+                                <div class="toast-header">
+                                  <a href="index.html">
+                                    <div class="profile-img" style="background: url(/img/avatars/1.jpg) no-repeat center; background-size: cover;">
+                                    </div>
+                                  </a>
+                                  <div class="me-auto fw-semibold"><a href="index.html">일길동</a></div>
+                                  
+                                  <button type="button" class="follow-close" data-bs-dismiss="toast" aria-label="Close">취소</button>
+                                </div>                       
+                            </div>
+                            <!-- follow-item end -->
+
+                            <!-- follow-item start -->
+                            <div class="bs-toast toast fade show follow-item" role="alert" aria-live="assertive" aria-atomic="true">                             
+                              <div class="toast-header">
+                                <a href="index.html">
+                                  <div class="profile-img" style="background: url(/img/avatars/1.jpg) no-repeat center; background-size: cover;">
+                                  </div>
+                                </a>
+                                <div class="me-auto fw-semibold"><a href="index.html">이길동</a></div>
+                                
+                                <button type="button" class="follow-close" data-bs-dismiss="toast" aria-label="Close">취소</button>
+                              </div>                       
+                          </div>
+                            <!-- follow-item end -->
+                            
+                            <!-- follow-item start -->
+                            <div class="bs-toast toast fade show follow-item" role="alert" aria-live="assertive" aria-atomic="true">                             
+                              <div class="toast-header">
+                                <a href="index.html">
+                                  <div class="profile-img" style="background: url(/img/avatars/1.jpg) no-repeat center; background-size: cover;">
+                                  </div>
+                                </a>
+                                <div class="me-auto fw-semibold"><a href="index.html">삼길동</a></div>
+                                
+                                <button type="button" class="follow-close" data-bs-dismiss="toast" aria-label="Close">취소</button>
+                              </div>                       
+                          </div>
+                            <!-- follow-item end -->
+                            
+                          </div>
+                          <!-- follow-list end -->
+
+                        </div>
+                      
+
+                      </div>
+                    </div>
+                    <!-- follow-box end -->
+
+
+                   
+                  </div>
+                </div> 
+              </div>
+
+              
+
+            </div>
+            <!-- / Content -->
+
+            
+	</div>

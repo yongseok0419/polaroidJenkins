@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!-- beautify ignore:start -->
+<html xmlns:th="http://www.thymeleaf.org"
+  lang="ko"
+  class="light-style customizer-hide"
+  dir="ltr"
+  data-theme="theme-default"
+  data-static-path="/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>POLAROID</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/img/polaroid_logo_m.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="/vendor/fonts/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="/css/demo.css" />
+
+    <!-- add css -->
+    <link rel="stylesheet" href="/css/add-style.css">
+
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <!-- Page CSS -->
+    <!-- Page -->
+    <link rel="stylesheet" href="/vendor/css/pages/page-auth.css" />
+    <!-- Helpers -->
+    <script src="/vendor/js/helpers.js"></script>
+
+    
+    <script src="/js/config.js"></script>
+    
+    <style>
+			.loginFailure{
+				color:red; 
+				display: none;
+				text-align: center;
+				width: 100%
+			}
+			
+			.loginWithdrawal{
+				color:red; 
+				display: none;
+				text-align: center;
+				width: 100%
+			}
+			
+    </style>
+  </head>
+
+  <body>
+    <!-- Content -->
+
+    <div class="container-xxl">
+      <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+          <!-- Register -->
+          <div class="card">
+            <div class="card-body">
+              <!-- Logo -->
+            
+                
+                  
+                  <h1 class="logo-box">
+                    <a href="#">
+                      <img src="/img/polaroid_logo.png" alt="polaroid logo" class="logo-login">
+                    </a>
+                  </h1>
+                
+              
+              <!-- /Logo -->
+              <h4 class="mb-2"></h4>
+              <p class="mb-4"></p>
+
+              <form id="formAuthentication" class="mb-3" action="login" method="POST">
+                <div class="mb-3">
+                  <label for="email" class="form-label">이메일</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="memberEmail"
+                    name="memberEmail"
+                    placeholder="이메일을 입력해주세요."
+                    autofocus
+                  />
+                </div>
+                <div class="mb-3 form-password-toggle">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label" for="password">비밀번호</label>
+                    
+                    <a th:href=@{forgotPwd}>
+                      <small>비밀번호를 잃어버렸나요?</small>
+                    </a>
+                  </div>
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="password"
+                      id="memberPwd"
+                      class="form-control"
+                      name="memberPwd"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                    />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  </div>
+                </div>
+                
+		<br>
+                
+                <span class="loginFailure">이메일 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요.</span>
+                <span class="loginWithdrawal">정지된 이메일이거나 탈퇴한 이메일입니다.</span>
+                
+                <div class="mb-3">
+                  <button class="btn btn-primary d-grid w-100" type="button" id="loginMsg">로그인</button>
+                </div>
+              </form>
+
+              <p class="text-center">
+                <span>계정이 없으신가요?</span>
+                <a th:href=@{join}>
+                  <span>가입하기</span>
+                </a>
+              </p>
+             
+            </div>
+          </div>
+          <!-- /Register -->
+        </div>
+      </div>
+    </div>
+
+    <!-- / Content -->
+
+    
+
+    <!-- Core JS -->
+    <!-- build:js static/vendor/js/core.js -->
+    <script src="/vendor/libs/jquery/jquery.js"></script>
+    <script src="/vendor/libs/popper/popper.js"></script>
+    <script src="/vendor/js/bootstrap.js"></script>
+    <script src="/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+    <script src="/js/main.js"></script>
+
+    <!-- Page JS -->
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script>
+    
+    		//이메일 또는 비밀번호가 틀렸을 시 비동기 메세지 띄우기
+    		$("#loginMsg").click(function(){
+    			 var memberEmail = $('#memberEmail').val();
+    			 var memberPwd = $('#memberPwd').val();
+    			$.ajax({
+    					method: "POST",
+    					url: "./login",
+    					data: JSON.stringify({
+    						memberEmail : memberEmail,
+    						memberPwd : memberPwd
+    					}),
+    					contentType: "application/json",
+    					dataType: "json",
+    					success: function(data){
+    						console.log("data : ", data);
+    						if(data == "0") { //이메일 또는 비밀번호가 틀렸을 경우
+    							$(".loginFailure").css("display", "inline-block");
+    						} else if(data == "2"){ //회원탈퇴한 경우
+    							$(".loginWithdrawal").css("display", "inline-block");
+    						} else if(data == "3"){ //로그인 시 이메일이 "admin"인 경우
+								location.href="/adminIndex";						
+    						} else { //로그인 시 이메일이 일반 회원인 경우
+    							location.href="/index";
+    						}
+    					},
+    					error: function(error){
+    						return false;
+    					}
+    			});
+    			
+    		});
+    
+    </script>
+    
+  </body>
+</html>

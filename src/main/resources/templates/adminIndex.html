@@ -1,0 +1,107 @@
+<!-- beautify ignore:start -->
+<html xmlns:th="http://www.thymeleaf.org"
+  lang="ko"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-static-path="/"
+  data-template="vertical-menu-template-free"
+>
+  
+<th:block th:replace="~{./include :: setContent( ~{:: .wrap} ) }"> 
+ 
+ 	<div class="wrap">
+
+            
+
+            <!-- Content --> 
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              
+
+              <div class="row">
+                <div class="col-md-12">
+                  <ul class="nav nav-pills flex-column flex-md-row mb-3">
+                    <li class="nav-item">
+                      <a class="nav-link active" th:href=@{adminIndex}><i class="bx bx-user me-1"></i>일반 사용자</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                      <a class="nav-link" th:href=@{adminStop}
+                        ><i class="bx bx-user-check me-1"></i>정지된 사용자</a
+                      >
+                    </li>
+                  </ul>
+                  <div class="row">
+
+
+                    
+
+                    <!-- follow-box start -->
+                    <div class="col-md-12 col-12 mb-md-0 mb-4">
+                      <div class="card follow-right">
+                        <h5 class="card-header">일반 사용자</h5>
+                        <div class="card-body">
+                     
+                        
+                          <!-- follow-list start -->
+                          <div class="toast-container follow-list">
+
+                           
+
+                            <!-- follow-item start -->
+                            
+                            <div th:each="mpd : ${mpdList}" class="bs-toast toast fade show user-item " role="alert" aria-live="assertive" aria-atomic="true">                             
+                              <form action="updateMemberStopperiod" method="get" id="form">
+                                <input type="hidden" name="memberNick" th:value="${mpd.memberNick}">
+                                <div class="toast-header">
+                                
+                                  <th:block th:if="${session.isProfile == 0}">
+			                        	<div class="profile-img" style="background: url(/img/avatars/1.jpg) no-repeat center; background-size: cover;">
+										          </div>
+			                      </th:block>    
+			                      <th:block th:unless="${session.isProfile == 0}">
+	                                    <div class="profile-img">
+	                                      <img class="profile-img" th:src="'/upload/'+ ${mpd.profileFilePath} + '/' + ${mpd.profileFileUuid} + '_' + ${mpd.profileFileName}" 
+	                                                                style="width:100%;">
+	                                    </div>
+                                  </th:block>
+                                    
+                                    <div class="me-auto fw-semibold"><a href="index.html">[[${mpd.memberNick}]]</a></div>                                
+                                    <select id="memberStopPeriod" name="memberStopPeriod" class="select2 form-select" style="width:35%;margin-right:12px;">
+                                      <option value="미정지">미정지</option>
+                                      <option value="7일">7일</option>
+                                      <option value="30일">30일</option>
+                                      <option value="영구">영구</option>
+                                    </select>
+                                    <button type="submit" class="follow-close" data-bs-dismiss="toast" aria-label="Close">정지</button>
+                                </div>                       
+                              </form>
+                          </div>
+                          
+                            <!-- follow-item end -->
+
+                            
+                            
+                          </div>
+                          <!-- follow-list end -->
+
+                        </div>
+                      
+
+                      </div>
+                    </div>
+                    <!-- follow-box end -->
+
+
+                   
+                  </div>
+                </div> 
+              </div>
+
+              
+
+            </div>
+            <!-- / Content -->
+	
+	</div>         

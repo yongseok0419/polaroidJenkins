@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.polaroid.app.profile.ProfileMapper">
+		
+		<!-- 프로필 등록 시 닉네임 변경 -->
+		<update id="updateMemberNick" parameterType="MemberDto">
+				UPDATE member
+				SET member_nick = #{memberNick}
+				WHERE member_id = #{memberId}
+		</update>
+		
+		<!-- 프로필 수정 시 닉네임, 비밀번호 변경 -->
+		<update id="updateMember" parameterType="MemberDto">
+				UPDATE member
+				SET member_nick = #{memberNick},
+					  member_pwd = #{memberPwdCheck}
+				WHERE member_id = #{memberId}
+		</update>
+		
+		<!-- 프로필 수정(이미지를 선택하지 않은 경우) -->
+		<update id="insertProfileExcludeImage" parameterType="ProfileDto">
+				UPDATE profile
+				SET profile_account = #{profileAccount},
+					  profile_website = #{profileWebsite},
+					  profile_aboutme = #{profileAboutMe}
+				WHERE member_id = #{memberId}
+		</update>
+		
+		<!-- 프로필 존재 유무 -->
+		<select id="isProfile" parameterType="int" resultType="int">
+				SELECT COUNT(*)
+				FROM profile
+				WHERE member_id = #{memberId}
+		</select>
+		
+		<!-- 프로필 수정 -->
+		<update id="updateProfile" parameterType="ProfileDto">
+				UPDATE profile
+				SET profile_filename = #{profileFileName},
+					  profile_filepath = #{profileFilePath},
+					  profile_fileuuid = #{profileFileUuid},
+					  profile_account = #{profileAccount},
+					  profile_website = #{profileWebsite},
+					  profile_aboutme = #{profileAboutMe},
+					  member_id = #{memberId}
+				WHERE member_id = #{memberId}
+		</update>
+		
+		<!-- 프로필 수정(이미지를 선택하지 않은 경우) -->
+		<update id="updateProfileExcludeImage" parameterType="ProfileDto">
+				UPDATE profile
+				SET profile_account = #{profileAccount},
+					  profile_website = #{profileWebsite},
+					  profile_aboutme = #{profileAboutMe}
+				WHERE member_id = #{memberId}
+		</update>
+
+		<!-- 프로필 화면 등록 -->
+		<insert id="insertProfileFile" parameterType="ProfileDto">
+				insert into profile(profile_filename,
+									      profile_filepath,
+									      profile_fileuuid,
+									      profile_account,
+										  profile_website,
+										  profile_aboutme,
+									      member_id
+									     )
+		 		values(#{profileFileName},
+		 			      #{profileFilePath},
+		 			      #{profileFileUuid},
+		 			      #{profileAccount},
+						  #{profileWebsite},
+						  #{profileAboutMe},
+		 			      #{memberId}
+		 			      )	   
+ 	    </insert>
+ 	    
+ 	    <!-- 프로필 화면 조회 -->
+		<select id="selectProfileDetail" parameterType="int" resultType="MemberProfileDto">
+ 	   		SELECT m.member_email AS memberEmail,
+ 	   					m.member_name AS memberName,
+ 	   					m.member_nick AS memberNick,
+ 	   					m.member_Phone AS memberPhone,
+ 	   					m.member_pwd AS memberPwd,
+ 	   					p.profile_filename AS profileFileName,
+ 	   				    p.profile_filepath AS profileFilePath,
+ 	   				    p.profile_fileuuid AS profileFileUuid,
+ 	   				    p.profile_account AS profileAccount,
+ 	   				    p.profile_website AS profileWebsite,
+ 	   				    p.profile_aboutme AS profileAboutMe
+ 	   		FROM member m INNER JOIN profile p
+ 	   		ON m.member_id = p.member_id
+ 	   		WHERE m.member_id = #{memberId}
+ 	   </select>
+ 	   
+ 	   <!-- 메인화면 회원 정보 조회 -->
+ 	   <select id="selectMemberList" parameterType="int" resultType="MemberProfileDto">
+ 	   			SELECT m.member_nick AS memberNick,
+ 	   						p.profile_filename AS profileFileName,
+ 	   						p.profile_filepath AS profileFilePath,
+ 	   						p.profile_fileuuid AS profileFileUuid,
+ 	   						p.profile_aboutme AS profileAboutMe,
+ 	   						p.profile_website AS profileWebsite
+ 	   			FROM member m INNER JOIN profile p 
+ 	   			ON m.member_id = p.member_id
+ 	   			WHERE m.member_id = #{memberId}
+ 	   </select>
+ 	   
+</mapper>

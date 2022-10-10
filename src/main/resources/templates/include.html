@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<!-- beautify ignore:start -->
+<html xmlns:th="http://www.thymeleaf.org" lang="ko"
+	class="light-style layout-menu-fixed" dir="ltr"
+	data-theme="theme-default" data-static-path="/"
+	data-template="vertical-menu-template-free">
+
+<th:block th:fragment="setContent( section )">
+
+	<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+<title>POLAROID</title>
+
+<meta name="description" content="" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/img/polaroid_logo_m.png" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+	rel="stylesheet" />
+
+<!-- Icons. Uncomment required icon fonts -->
+<link rel="stylesheet" href="/vendor/fonts/boxicons.css" />
+
+<!-- Core CSS -->
+<link rel="stylesheet" href="/vendor/css/core.css"
+	class="template-customizer-core-css" />
+<link rel="stylesheet" href="/vendor/css/theme-default.css"
+	class="template-customizer-theme-css" />
+<link rel="stylesheet" href="/css/demo.css" />
+
+<!-- Vendors CSS -->
+<link rel="stylesheet"
+	href="/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+<link rel="stylesheet" href="/vendor/libs/apex-charts/apex-charts.css" />
+
+<!-- add CSS -->
+<link rel="stylesheet" href="/css/add-style.css">
+<link rel="stylesheet" href="/css/detail-page.css">
+
+<!-- Core JS -->
+<!-- build:js static/vendor/js/core.js -->
+<script src="/vendor/libs/jquery/jquery.js"></script>
+<script src="/vendor/libs/popper/popper.js"></script>
+<script src="/vendor/js/bootstrap.js"></script>
+<script src="/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+<script src="/vendor/js/menu.js"></script>
+<!-- Main JS -->
+<script src="/js/main.js"></script>
+<script th:inline="javascript" src="/js/ajax.js"></script>
+
+<!-- Helpers -->
+<script src="/vendor/js/helpers.js"></script>
+
+<!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+<script src="/js/config.js"></script>
+
+
+<!-- 회원탈퇴 -->
+<style>
+.withdrawalFailure {
+	color: red;
+	display: none;
+	text-align: center;
+	width: 100%
+}
+</style>
+
+	</head>
+
+	<body>
+
+
+		<!-- Layout wrapper -->
+		<div class="layout-wrapper layout-content-navbar">
+			<div class="layout-container">
+
+
+
+
+
+
+
+				<!-- Layout container -->
+				<div class="layout-page">
+
+
+
+
+
+
+
+					<!-- Navbar -->
+
+					<nav
+						class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+						id="layout-navbar">
+
+
+						<div class="navbar-nav-right d-flex align-items-center"
+							id="navbar-collapse">
+							<!-- Search -->
+
+							<h1 class="logo">
+								<a th:href=@{index}><img src="/img/polaroid_logo.png"
+									alt="polaroid logo"></a>
+							</h1>
+							<h1 class="logo-m">
+								<a href="index.html"><img src="/img/polaroid_logo_m.png"
+									alt=""></a>
+							</h1>
+							<div class="navbar-nav align-items-center search-box">
+								<div class="nav-item d-flex align-items-center">
+									<i class="bx bx-search fs-4 lh-0"></i> <input type="text"
+										class="form-control border-0 shadow-none" id="keyword"
+										placeholder="Search..." aria-label="Search..." />
+								</div>
+							</div>
+							<!-- /Search -->
+
+							<ul
+								class="navbar-nav flex-row align-items-center ms-auto icon-style">
+								<!-- Place this tag where you want the button to render. -->
+								<li class="nav-item lh-1 me-3"><a th:href=@{listAll}> <i
+										class='bx bx-home-alt'></i>
+								</a></li>
+								<li class="nav-item lh-1 me-3 "><a th:href=@{listLike}>
+										<i class='bx bx-heart'></i>
+								</a></li>
+								<li class="nav-item lh-1 me-3"><a th:href=@{upload}> <i
+										class='bx bx-message-square-add'></i>
+								</a></li>
+								<span th:if="${session.member.memberEmail.equals('admin@polaroid.co.kr')}">
+									<li class="nav-item lh-1 me-3"><a th:href=@{adminIndex}>
+											<i class='bx bxs-user-account'></i>
+									</a></li>
+								</span>
+								<span th:unless="${session.member.memberEmail.equals('admin')}"></span>
+
+								<!-- User -->
+								<li class="nav-item navbar-dropdown dropdown-user dropdown">
+									<span class="nav-link dropdown-toggle hide-arrow"
+									href="javascript:void(0);" data-bs-toggle="dropdown">
+										<!-- 프로필 정보가 없는 경우 -->
+										<th:block
+											th:if="${session.isProfile == 0}">
+
+											<div class="avatar">
+												<div class="profile-img"
+													style="background: url(/img/avatars/1.jpg) no-repeat center; background-size: cover;"></div>
+											</div>
+										</th:block>
+										<!-- 프로필 정보가 있는 경우 -->
+										<th:block th:if="${session.isProfile == 1}">
+											<!-- 이미지를 선택하지 않은 경우 -->
+											<th:block th:if="${session. mpd.profileFileName == null}">
+													<div class="avatar">
+														<div class="profile-img"
+															style="background: url(/img/avatars/1.jpg) no-repeat center; background-size: cover;"></div>
+													</div>
+											</th:block>
+											<th:block th:unless="${session. mpd.profileFileName == null}">
+													<div class="flex-shrink-0 me-3">
+														<div class="avatar">
+															<img class="profile-img"
+																th:src="'/upload/'+ ${session.mpd.profileFilePath} + '/' + ${session.mpd.profileFileUuid} + '_' + ${session.mpd.profileFileName}"
+																style="width: 100%;">
+														</div>
+													</div>
+											</th:block>
+										</th:block>
+								</span>
+
+									<ul class="dropdown-menu dropdown-menu-end">
+										<li><a class="dropdown-item" href="#">
+												<div class="d-flex">
+													<!-- 프로필 정보가 없는 경우 -->
+													<th:block th:if="${session.isProfile == 0}">
+
+														<div class="flex-shrink-0 me-3">
+															<div class="avatar">
+																<div class="profile-img"
+																	style="background: url(/img/avatars/1.jpg) no-repeat center; background-size: cover;"></div>
+															</div>
+														</div>
+													</th:block>
+													<!-- 프로필 정보가 있는 경우 -->
+													<th:block th:if="${session.isProfile == 1}">
+														<!-- 이미지를 선택하지 않은 경우 -->
+														<th:block th:if="${session. mpd.profileFileName == null}">
+																<div class="avatar">
+																	<div class="profile-img"
+																		style="background: url(/img/avatars/1.jpg) no-repeat center; background-size: cover;"></div>
+																</div>
+														</th:block>
+														<th:block th:unless="${session. mpd.profileFileName == null}">
+																<div class="flex-shrink-0 me-3">
+																	<div class="avatar">
+																		<img class="profile-img"
+																			th:src="'/upload/'+ ${session.mpd.profileFilePath} + '/' + ${session.mpd.profileFileUuid} + '_' + ${session.mpd.profileFileName}"
+																			style="width: 100%;">
+																	</div>
+																</div>
+														</th:block>
+													</th:block>
+
+													<div class="flex-grow-1">
+														
+
+														<span class="fw-semibold d-block">[[${session.member.memberNick}]]</span>
+														<small class="text-muted">[[${session.member.memberName}]]</small>
+													</div>
+												</div>
+										</a></li>
+										<li>
+											<div class="dropdown-divider"></div>
+										</li>
+										<li><a class="dropdown-item" th:href=@{index}> <i
+												class="bx bx-user me-2"></i> <span class="align-middle">프로필</span>
+										</a></li>
+										<!-- <li>
+                 <a class="dropdown-item" href="#">
+                   <span class="d-flex align-items-center align-middle">
+                     <i class="flex-shrink-0 bx bx-bookmark me-2"></i>
+                     <span class="flex-grow-1 align-middle">북마크</span>
+                     
+                   </span>
+                 </a>
+               </li> -->
+
+										<th:block th:if="${session.isProfile == 0}">
+										</th:block>
+										<th:block th:unless="${session.isProfile == 0}">
+											<li><a class="dropdown-item"
+												th:href=@{updateProfileForm}> <i class="bx bx-cog me-2"></i>
+													<span class="align-middle">설정</span>
+											</a></li>
+										</th:block>
+
+										<li>
+											<div class="dropdown-divider"></div>
+										</li>
+										<li><a class="dropdown-item" th:href="@{logoutForm}">
+												<i class="bx bx-power-off me-2"></i> <span
+												class="align-middle">로그아웃</span>
+										</a></li>
+									</ul>
+								</li>
+								<!--/ User -->
+							</ul>
+						</div>
+					</nav>
+
+					<!-- / Navbar -->
+
+					<!-- Content wrapper -->
+					<div class="content-wrapper">
+
+
+
+						<!-- section -->
+						<th:block th:replace="${section}"></th:block>
+
+
+
+						<!-- Footer -->
+						<footer class="content-footer footer bg-footer-theme">
+							<div
+								class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+								<div class="mb-2 mb-md-0" style="margin: 0 auto;">
+									©
+									<script>
+                  document.write(new Date().getFullYear());
+                </script>
+
+									, POLAROID
+
+								</div>
+
+							</div>
+						</footer>
+						<!-- / Footer -->
+
+						<div class="content-backdrop fade"></div>
+					</div>
+					<!-- Content wrapper -->
+				</div>
+				<!-- / Layout page -->
+			</div>
+
+			<!-- Overlay -->
+			<div class="layout-overlay layout-menu-toggle"></div>
+		</div>
+		<!-- / Layout wrapper -->
+
+
+
+		<!-- Core JS -->
+
+		<!-- endbuild -->
+
+		<!-- Vendors JS -->
+		<script src="/vendor/libs/apex-charts/apexcharts.js"></script>
+
+		<!-- Main JS -->
+		<script src="./js/main.js"></script>
+
+		<!-- Page JS -->
+		<script src="/js/dashboards-analytics.js"></script>
+
+		<!-- Place this tag in your head or just before your close body tag. -->
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+		<script th:inline="javascript">
+   			let post_id = 0;
+   			//let isModified = false;
+  			let reply_id = 0;
+  			let replyContent = '';
+   		    let modifyForm_reply_id = 0;
+
+   		    let memberNick = /*[[${session.member.memberNick}]]*/ ;
+            let memberId = /*[[${session.member.memberId}]]*/ ;
+            let member_id = /*[[${member_id}]]*/ ;
+            let session = /*[[${session.member}]]*/ ;         
+  		    let isProfile = /*[[${session.isProfile}]]*/ ;         
+ 		    let mpd = /*[[${session.mpd}]]*/ ;         
+        
+  		</script>
+
+
+	</body>
+</html>
+

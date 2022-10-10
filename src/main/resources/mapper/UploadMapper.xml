@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.polaroid.app.upload.UploadMapper">
+	<insert id="registerUploadFile" parameterType="UploadDto">
+		insert into upload(upload_filename,
+						   upload_filepath,
+						   upload_fileuuid,
+						   upload_type,
+						   post_id
+						   )
+ 		values(#{upload_filename},
+ 			   #{upload_filepath},
+ 			   #{upload_fileuuid},
+ 			   #{upload_type},
+ 			   #{post_id}
+ 			 
+ 			  )	   
+ 			  
+ 	 </insert>
+	
+	
+	<delete id="deleteUploadFile" parameterType="int">
+		delete 
+		from upload 
+		where post_id = #{post_id}
+	</delete>
+	
+
+</mapper>

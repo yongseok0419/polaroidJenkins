@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<!-- beautify ignore:start -->
+<html xmlns:th="http://www.thymeleaf.org"
+  lang="ko"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-static-path="/"
+  data-template="vertical-menu-template-free"
+>
+
+<th:block th:replace="~{./include :: setContent( ~{:: .wrap} ) }"> 
+ 
+    <div class="wrap">
+    
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="row">
+                <div class="col-md-12">
+                  
+                  <ul class="nav nav-pills flex-column flex-md-row mb-3">
+                  
+                    <li class="nav-item">
+                      <a class="nav-link active" th:href=@{profile}><i class="bx bx-user me-1"></i> 프로필</a>
+                    </li>
+                    
+                   <!--  <li class="nav-item">
+                      <a class="nav-link" th:href=@{follow}><i class="bx bx-user-check me-1"></i> 팔로우</a>
+                    </li> -->
+                  
+                  </ul>
+                  
+                  <div class="card mb-4 filebox preview-image">
+                    <h5 class="card-header">프로필 편집</h5>
+                    <!-- Account -->
+                    
+                    <div class="card-body profile-box">
+                      <form id="form" action="updateProfile" method="POST" enctype="multipart/form-data">
+                    
+                     <div class="card-body profile-box">
+                        <div class="d-flex align-items-start align-items-sm-center gap-4">
+                          <div class="profile-img"> 
+                            <label class="upload-display" for="upload">
+                              <span class="upload-thumb-wrap">
+                           <!--  <th:block th:if="${session.mpd.profileFileName == null}">
+                               <img class="upload-thumb" src="/img/add_button.png" style="width:100%">
+                            </th:block>
+                            <th:block th:unless="${session.mpd.profileFileName == null}">
+                               <div class="profile-img">
+                                 <img class="upload-thumb" th:src="'/upload/'+ ${mpd.profileFilePath} + '/' + ${mpd.profileFileUuid} + '_' + ${mpd.profileFileName}" 
+                                     style="width:100%;">
+                        </div>
+                            </th:block> -->
+                               <img class="profile-img upload-thumb" th:src="'/upload/'+ ${mpd.profileFilePath} + '/' + ${mpd.profileFileUuid} + '_' + ${mpd.profileFileName}" 
+                            style="width:100%;">
+                            
+                            </span>
+                          </label>
+                          <!-- <input class="upload-name" value="파일선택" disabled="disabled"> -->
+                           <input type="file" name="upload" id="upload" hidden class="upload-hidden"> 
+                          
+                        </div>
+                        <div class="button-wrapper">
+                            <label for="upload" class="upload-display btn btn-primary me-2 mb-4" tabindex="0">
+                              <span class="d-none d-sm-block">업로드</span>
+                              <i class="bx bx-upload d-block d-sm-none"></i>
+                              <input
+                                type="file"
+                                id="upload"
+                                name="upload"
+                                class="account-file-input upload-name upload-hidden"
+                                hidden
+                                accept="image/png, image/jpeg"
+                              />
+                            </label>
+
+                          <p class="text-muted mb-0">[[${mpd.profileAboutMe}]]</p>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="my-0" />
+                    
+                        <div class="row">
+                          <div class="mb-3 col-md-6">
+                            <label for="memberEmail" class="form-label">이메일</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="memberEmail"
+                              name="memberEmail"
+                              th:value="${mpd.memberEmail}"
+                              autofocus
+                              disabled
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="memberName" class="form-label">이름</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="memberName"
+                              name="memberName"
+                              maxlength="15"
+                              th:value="${mpd.memberName}"
+                              autofocus
+                              disabled
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="profileAccount" class="form-label">계정 공개 여부</label>
+                            <select id="profileAccount" name="profileAccount" class="select2 form-select">
+                               <option value="1">전체 공개</option>
+                              <!-- <option value="2">팔로우만 공개</option> -->
+                              <option value="2">비공개</option>
+                            </select>
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="memberNick" class="form-label">닉네임</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="memberNick"
+                              name="memberNick"
+                              maxlength="8"
+                              th:value="${mpd.memberNick}"
+                              autofocus
+                             
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="profileWebsite" class="form-label">웹사이트</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="profileWebsite"
+                              name="profileWebsite"
+                              maxlength="30"
+                              th:value="${mpd.profileWebsite}"
+                              autofocus
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="memberPhone" class="form-label">휴대폰</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="memberPhone"
+                              name="memberPhone"
+                              maxlength="11"
+                              th:value="${mpd.memberPhone}"
+                              autofocus
+                             
+                            />
+                          </div>
+
+                          <div class="mb-3 col-md-6">
+                            <label for="memberPwdCheck" class="form-label">비밀번호</label>
+                            <input
+                              type="password"
+                              placeholder="최소 8자 최대 12자 이하로 입력해주세요."
+                              class="form-control"
+                              id="memberPwdCheck"
+                              name="memberPwdCheck"
+                              maxlength="12"
+                              th:value="${mpd.memberPwd}"
+                            />
+                          </div>
+                          
+                          <div class="mb-3 col-md-6">
+                            <label for="memberPwdCheck_ck" class="form-label">비밀번호 확인</label>
+                            <input
+                              type="password"
+                              placeholder="동일한 비밀번호로 입력해주세요."
+                              class="form-control"
+                              id="memberPwdCheck_ck"
+                              name="memberPwdCheck_ck"
+                              maxlength="12"
+                              th:value="${mpd.memberPwd}"
+                            />
+                          </div>
+                          
+                          <div class="mb-12 col-md-12">
+                            
+                            <label for="profileAboutMe" class="form-label">자기소개</label>
+                            <textarea
+                              class="form-control"
+                              type="text"
+                              id="profileAboutMe"
+                              name="profileAboutMe"
+                              maxlength="25"
+                              autofocus
+                            >[[${mpd.profileAboutMe}]]</textarea>
+                          </div>
+                         
+                        </div>
+                        <div class="mt-2">
+                          <button type="button" id="sendBtn" class="btn btn-primary me-2">변경</button>
+                          
+                          <span class="delete-member"><a 
+                             href="#" type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modalScrollable"
+                            >회원탈퇴</a></span>
+                          
+                        </div>
+                        
+                      </form>
+                    </div>
+                    <!-- /Account -->
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+
+
+            <!-- modals2 start ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+            <div id="modalClose">
+            <form action="withdrawal" method="POST">
+          <div class="modal fade" id="modalScrollable" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                
+                <div class="modal-body content-modal">
+
+                  <div class="img_section">
+                    <!-- <div class="trans_inner">
+                        <img src="/img/avatars/1.jpg"  alt="">
+                    </div> -->
+                    <!-- Bootstrap carousel -->
+                <div class="col-md">
+
+                  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                    
+                  </div>
+                </div>
+                <!-- Bootstrap crossfade carousel -->
+                </div>
+
+                  <div class="detail--right_box ">
+
+                    
+                    
+                    <div> 
+                      <p class="align-center">정말 탈퇴하시겠습니까? <br>
+                        탈퇴하실려면 비밀번호를 입력하고 <br> 탈퇴하기 버튼을 선택해주세요.</p>
+                    </div>
+
+                    <div class="mb-3 col-md-12">
+                      <label for="organization" class="form-label">비밀번호</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="memberPwd"
+                        name="memberPwd"
+                      />
+                    </div>
+                 
+
+                <span class="withdrawalFailure" id="FailureMsg">비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요.</span>
+
+
+                </div>
+                </div>
+                <div class="modal-footer content-modal" style="flex-direction: row-reverse">
+                 
+                  <button type="button" class="btn btn-primary" id="withdrawalMsg">탈퇴하기</button>
+                  <button type="button" class="btn btn-primary"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  >취소</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-inline-spacing">
+            <!-- Button trigger modal -->
+            
+           
+          </div>
+
+         </form>
+         </div>
+          <!-- modals2 end ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+
+
+            <!-- / Content -->
+  <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script> -->
+    <script>
+    
+          //프로필 화면 비밀번호 일치 여부
+         let    isCorrespond = true;
+         
+         $('#sendBtn').on('click', function(){
+            
+            if(isCorrespond) {
+               $('#form').submit();
+            } else {
+               alert("동일한 비밀번호를 입력하세요."); 
+            } 
+            
+         });
+         
+         $("#memberPwdCheck_ck").blur(function(){
+            if($("#memberPwdCheck_ck").val() == $("#memberPwdCheck").val()){
+               isCorrespond = true;
+            }else{
+               isCorrespond = false;
+            }
+         });
+         
+         $("#memberPwdCheck").blur(function(){
+            if($("#memberPwdCheck").val() == $("#memberPwdCheck_ck").val()){
+               isCorrespond = true;
+            }else{
+               isCorrespond = false;
+            }
+         });
+    
+          //모달창 비밀번호가 틀렸을 시 비동기 메세지 띄우기
+          $("#withdrawalMsg").click(function(){
+              var memberPwd = $('#memberPwd').val();
+             $.ajax({
+                   method: "POST",
+                   url: "./withdrawalForm",
+                   data: JSON.stringify({
+                      memberPwd : memberPwd
+                   }),
+                   contentType: "application/json",
+                   dataType: "json",
+                   success: function(data){
+                      console.log("data : ", data);
+                      if(data == "0") {
+                         $(".withdrawalFailure").css("display", "inline-block");
+                      } else {
+                         event();
+                      }
+                   },
+                   error: function(error){
+                      return false;
+                   }
+             });
+             
+          });
+          
+          //모달창 닫으면 내용 초기화
+          $('#modalClose').on('hidden.bs.modal', function (e) {
+             console.log('modal close');
+             $(this).find('form')[0].reset();
+          });
+          
+          
+         //탈퇴 재질문
+         function event(){
+         if (confirm("회원탈퇴 시 중복된 이메일로 재가입할 수 없습니다.\n정말 탈퇴 하시겠습니까?") == true){//확인
+            alert("회원탈퇴가 완료되었습니다.");
+            
+            location.href='/withdrawal' 
+         }else{//취소
+            return false;
+         }
+       }
+
+       //파일업로드
+
+         $(document).ready(function() {
+
+    var fileTarget = $('.filebox .upload-hidden'); 
+    fileTarget.on('change', function(){ //change이벤트
+    if(window.FileReader){ // modern browser 
+       var filename = $(this)[0].files[0].name; } 
+    else { // old IE 
+       var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+    } // 추출한 파일명 삽입 
+    $(this).siblings('.upload-name').val(filename); });
+
+    var imgTarget = $('.preview-image .upload-hidden'); 
+    imgTarget.on('change', function() { 
+       var parent = $(this).parent(); 
+       // parent.children('.upload-display').remove(); 
+       
+       if(window.FileReader){ //image 파일만 
+          if (!$(this)[0].files[0].type.match(/image\//)) return; 
+
+          var reader = new FileReader(); 
+          reader.onload = function(e){ 
+             var src = e.target.result; 
+             // parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"></div></div>'); 
+             parent.find(".upload-thumb-wrap").children().attr("src", src);
+          } 
+          reader.readAsDataURL($(this)[0].files[0]); 
+       } else { 
+          $(this)[0].select(); 
+          $(this)[0].blur(); 
+          var imgSrc = document.selection.createRange().text; 
+          parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>'); 
+
+          var img = $(this).siblings('.upload-display').find('img'); 
+          img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")"; 
+       } 
+    });
+
+    });
+
+
+</script>
+
+
+    
+</div>
