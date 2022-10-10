@@ -12,19 +12,19 @@ public class WebConfig implements WebMvcConfigurer {
 		
 		//정적 리소스 자원 경로 추가
         registry
-                .addResourceHandler( "img/**")
+                .addResourceHandler( "/img/**")
                 .addResourceLocations("classpath:/static/img/");
 
         registry
-                .addResourceHandler("css/**")
+                .addResourceHandler("/css/**")
                 .addResourceLocations("classpath:/static/css/");
         
         registry
-		        .addResourceHandler("js/**")
+		        .addResourceHandler("/js/**")
 		        .addResourceLocations("classpath:/static/js/");
 		
         registry
-	            .addResourceHandler("vendor/**")
+	            .addResourceHandler("/vendor/**")
 	            .addResourceLocations("classpath:/static/vendor/");
 		
         //업로드 파일처리
@@ -33,4 +33,5 @@ public class WebConfig implements WebMvcConfigurer {
         		.addResourceLocations("file:/usr/local/tomcat/upload");
         
 	}
+	
 }
