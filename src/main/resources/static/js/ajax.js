@@ -15,7 +15,7 @@
 
           //게시글 상세 조회
           $.ajax({
-            url: "/posts/" + post_id,
+            url: "/polaroid/posts/" + post_id,
             type: 'GET',
             contentType: 'application/json;charset=utf-8',
             dataType: 'json',
@@ -42,7 +42,7 @@
           
           //게시글 조회수 증가
           $.ajax({
-            url: "/postView/" + post_id,
+            url: "/polaroid/postView/" + post_id,
             type: 'PUT',
             contentType: 'application/json;charset=utf-8',
             dataType: 'json',
@@ -59,7 +59,7 @@
 
           //댓글 조회
           $.ajax({
-            url: "/posts/" + post_id + "/replies",
+            url: "/polaroid/posts/" + post_id + "/replies",
             type: 'GET',
             contentType: 'application/json;charset=utf-8',
             dataType: 'json',
@@ -80,7 +80,7 @@
           if ($('#replyContent').val() != "") {
 
             $.ajax({
-              url: "/posts/" + post_id + "/replies",
+              url: "/polaroid/posts/" + post_id + "/replies",
               type: 'POST',
               contentType: 'application/json;charset=utf-8',
               dataType: 'json',
@@ -110,7 +110,7 @@
             if ($('#replyContent').val() != "") {
 
               $.ajax({
-                url: "/posts/" + post_id + "/replies",
+                url: "/polaroid/posts/" + post_id + "/replies",
                 type: 'POST',
                 contentType: 'application/json;charset=utf-8',
                 dataType: 'json',
@@ -140,7 +140,7 @@
           let reply_id = $(this).closest("div").data("id");
 
           $.ajax({
-            url: "/posts/" + post_id + "/replies/" + reply_id,
+            url: "/polaroid/posts/" + post_id + "/replies/" + reply_id,
             type: 'DELETE',
             contentType: 'application/json;charset=utf-8',
             dataType: 'json',
@@ -175,7 +175,7 @@
 
           if ($('#modContent').val() != "") {
             $.ajax({
-              url: "posts/" + post_id + "/replies/" + reply_id,
+              url: "/polaroid/posts/" + post_id + "/replies/" + reply_id,
               type: 'PUT',
               contentType: 'application/json;charset=utf-8',
               dataType: 'json',
@@ -209,7 +209,7 @@
             if ($('#modContent').val() != "") {
 
               $.ajax({
-                url: "posts/" + post_id + "/replies/" + reply_id,
+                url: "/polaroid/posts/" + post_id + "/replies/" + reply_id,
                 type: 'PUT',
                 contentType: 'application/json;charset=utf-8',
                 dataType: 'json',
@@ -241,7 +241,7 @@
 
               if ($('#keyword').val() != "") {
                 $.ajax({
-                  url: "/search",
+                  url: "/polaroid/search",
                   type: 'POST',
                   contentType: 'application/json;charset=utf-8',
                   dataType: 'json',
@@ -275,7 +275,7 @@
             if (css.includes('bx-heart')) {  //좋아요 추가
 
               $.ajax({
-                url: "/postLike/" + post_id,
+                url: "/polaroid/postLike/" + post_id,
                 type: 'GET',
                 contentType: 'application/json;charset=utf-8',
                 dataType: 'json',
@@ -291,7 +291,7 @@
 
             } else {  //좋아요 취소
               $.ajax({
-                url: "/deletePostLike/" + post_id,
+                url: "/polaroid/deletePostLike/" + post_id,
                 type: 'GET',
                 contentType: 'application/json;charset=utf-8',
                 dataType: 'json',
@@ -323,7 +323,7 @@
 
 
               $.ajax({
-                url: "/posts/" + post_id,
+                url: "/polaroid/posts/" + post_id,
 
                 type: 'GET',
                 contentType: 'application/json;charset=utf-8',
@@ -337,7 +337,7 @@
               });
 
               $.ajax({
-                  url: "/posts/" + post_id + "/replies",
+                  url: "/polaroid/posts/" + post_id + "/replies",
                   type: 'GET',
                   contentType: 'application/json;charset=utf-8',
                   dataType: 'json',
@@ -366,7 +366,7 @@
 
             if (css.includes('bx-heart')) {                         //좋아요 추가
               $.ajax({
-                url: "/replyLike/" +post_id + "/" + reply_id,
+                url: "/polaroid/replyLike/" +post_id + "/" + reply_id,
                 type: 'GET',
                 contentType: 'application/json;charset=utf-8',
                 dataType: 'json',
@@ -383,7 +383,7 @@
 
             } else {                                                      //좋아요 취소
               $.ajax({
-                url: "/deleteReplyLike/" + post_id + "/" + reply_id,
+                url: "/polaroid/deleteReplyLike/" + post_id + "/" + reply_id,
                 type: 'GET',
                 contentType: 'application/json;charset=utf-8',
                 dataType: 'json',
@@ -441,7 +441,7 @@
                   result.find('.hover-box').css('display','block');
                   
                   $.ajax({
-                    url: "/posts/" + post_id,
+                    url: "/polaroid/posts/" + post_id,
                     type: 'GET',
                     contentType: 'application/json;charset=utf-8',
                     dataType: 'json',
@@ -454,7 +454,7 @@
                   });
 
                   $.ajax({
-                    url: "/posts/" + post_id + "/replies",
+                    url: "/polaroid/posts/" + post_id + "/replies",
                     type: 'GET',
                     contentType: 'application/json;charset=utf-8',
                     dataType: 'json',

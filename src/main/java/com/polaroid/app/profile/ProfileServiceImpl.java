@@ -31,7 +31,7 @@ public class ProfileServiceImpl implements ProfileService {
 	//폴더생성함수
 	public String makeFolder() {
 		String path = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyMMdd"));
-		File file = new File(upload_filepath + "\\" + path);
+		File file = new File(upload_filepath + "/" + path);
 		if(file.exists() == false) {
 			file.mkdirs();	//파일 생성
 		}
@@ -50,7 +50,7 @@ public class ProfileServiceImpl implements ProfileService {
 			
 			System.out.println(origin.toString());
 			//저장할 파일명 (경로가 \\가 들어오는 경우 잘라서 처리)
-			String filename = origin.substring(origin.lastIndexOf("\\") + 1);
+			String filename = origin.substring(origin.lastIndexOf("/") + 1);
 			//파일사이즈
 			long size = upload.getSize();
 			//랜덤 이름
@@ -58,9 +58,9 @@ public class ProfileServiceImpl implements ProfileService {
 			//날짜 경로
 			String path = makeFolder();
 			//업로드 경로
-			String saveName = upload_filepath + "\\" + path + "\\"+ uuid + "_" + filename;
+			String saveName = upload_filepath + "/" + path + "/"+ uuid + "_" + filename;
 			//썸네일 경로
-			String thumbnailName = upload_filepath + "\\" + path + "\\thumb_" + uuid + "_" + filename;
+			String thumbnailName = upload_filepath + "/" + path + "/thumb_" + uuid + "_" + filename;
 			
 			System.out.println("파일명 : " + filename);
 			System.out.println("파일크기 : " + size);
@@ -134,7 +134,7 @@ public class ProfileServiceImpl implements ProfileService {
 		
 		System.out.println(origin.toString());
 		//저장할 파일명 (경로가 \\가 들어오는 경우 잘라서 처리)
-		String filename = origin.substring(origin.lastIndexOf("\\") + 1);
+		String filename = origin.substring(origin.lastIndexOf("/") + 1);
 		//파일사이즈
 		long size = upload.getSize();
 		//랜덤 이름
@@ -142,9 +142,9 @@ public class ProfileServiceImpl implements ProfileService {
 		//날짜 경로
 		String path = makeFolder();
 		//업로드 경로
-		String saveName = upload_filepath + "\\" + path + "\\"+ uuid + "_" + filename;
+		String saveName = upload_filepath + "/" + path + "/"+ uuid + "_" + filename;
 		//썸네일 경로
-		String thumbnailName = upload_filepath + "\\" + path + "\\thumb_" + uuid + "_" + filename;
+		String thumbnailName = upload_filepath + "/" + path + "/thumb_" + uuid + "_" + filename;
 		
 		System.out.println("파일명 : " + filename);
 		System.out.println("파일크기 : " + size);

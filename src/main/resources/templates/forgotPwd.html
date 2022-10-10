@@ -144,7 +144,7 @@
         var memberEmail = $('#memberEmail').val();
       $.ajax({
             method: "POST",
-            url: "./forgotPwd",
+            url: "/polaroid/forgotPwd",
             data: JSON.stringify({
                memberEmail : memberEmail
             }),
@@ -154,7 +154,7 @@
                console.log("data : ", data);
                if(data == "1") {
                   alert("비밀번호 변경 링크가 전송 되었습니다.\n이메일을 확인해주세요.");
-                  location.href="/forgotPwd";
+                  location.href="/polaroid/forgotPwd";
                } else {
                   $(".sendEmailFailure").css("display", "inline-block");
                }

@@ -37,7 +37,7 @@ public class PostServiceImpl implements PostService {
    @Transactional
    public String makeFolder() {
       String path = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyMMdd"));
-      File file = new File(upload_filepath + "\\" + path);
+      File file = new File(upload_filepath + "/" + path);
       if (file.exists() == false) {
          file.mkdirs(); // 파일생성
       }
@@ -59,7 +59,7 @@ public class PostServiceImpl implements PostService {
          // 실제파일명 (브라우저별로 조금씩 다를수가있음)
          String origin = file.getOriginalFilename();
          // 저장할파일명(경로가 \\가 들어오는 경우 잘라서 처리)
-         String filename = origin.substring(origin.lastIndexOf("\\") + 1);
+         String filename = origin.substring(origin.lastIndexOf("/") + 1);
          // 파일사이즈
          long size = file.getSize();
          // 랜덤이름
@@ -67,9 +67,9 @@ public class PostServiceImpl implements PostService {
          // 날짜경로
          String path = makeFolder();
          // 업로드경로
-         String saveName = upload_filepath + "\\" + path + "\\" + uuid + "_" + filename;
+         String saveName = upload_filepath + "/" + path + "/" + uuid + "_" + filename;
          // 썸네일경로
-         String thumbnailName = upload_filepath + "\\" + path + "\\thumb_" + uuid + "_" + filename;
+         String thumbnailName = upload_filepath + "/" + path + "/thumb_" + uuid + "_" + filename;
 
          System.out.println(filename);
          System.out.println(size);
@@ -149,7 +149,7 @@ public class PostServiceImpl implements PostService {
          // 실제파일명 (브라우저별로 조금씩 다를수가있음)
          String origin = file.getOriginalFilename();
          // 저장할파일명(경로가 \\가 들어오는 경우 잘라서 처리)
-         String filename = origin.substring(origin.lastIndexOf("\\") + 1);
+         String filename = origin.substring(origin.lastIndexOf("/") + 1);
          // 파일사이즈
          long size = file.getSize();
          // 랜덤이름
@@ -157,9 +157,9 @@ public class PostServiceImpl implements PostService {
          // 날짜경로
          String path = makeFolder();
          // 업로드경로
-         String saveName = upload_filepath + "\\" + path + "\\" + uuid + "_" + filename;
+         String saveName = upload_filepath + "/" + path + "/" + uuid + "_" + filename;
          // 썸네일경로
-         String thumbnailName = upload_filepath + "\\" + path + "\\thumb_" + uuid + "_" + filename;
+         String thumbnailName = upload_filepath + "/" + path + "/thumb_" + uuid + "_" + filename;
 
          System.out.println(filename);
          System.out.println(size);

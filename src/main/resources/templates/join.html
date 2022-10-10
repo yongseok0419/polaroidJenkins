@@ -634,7 +634,7 @@
        
        $.ajax({
           method: "POST",
-          url: "/authForm",
+          url: "/polaroid/authForm",
           data: JSON.stringify({
              memberEmail : memberEmail,
           }),
@@ -657,7 +657,7 @@
         
         $.ajax({
            method: "POST",
-           url: "/checkAuthForm",
+           url: "/polaroid/checkAuthForm",
            data: JSON.stringify({
               memberAuthentication: memberAuthentication,
            }),
@@ -687,7 +687,7 @@
          console.log("memberEmail : ", memberEmail);
            $.ajax({
               method: "POST",
-               url:'./checkEmail', //Controller에서 요청 받을 주소
+               url:'/polaroid/checkEmail', //Controller에서 요청 받을 주소
                data: JSON.stringify({
                  memberEmail : memberEmail,
               }),
@@ -718,7 +718,7 @@
             console.log("memberNick : ", memberNick);
               $.ajax({
                  method: "POST",
-                  url:'./checkNick', //Controller에서 요청 받을 주소
+                  url:'/polaroid/checkNick', //Controller에서 요청 받을 주소
                   data: JSON.stringify({
                     memberNick : memberNick,
                  }),
@@ -748,7 +748,7 @@
                console.log("memberPhone : ", memberPhone);
                  $.ajax({
                     method: "POST",
-                     url:'./checkPhone', //Controller에서 요청 받을 주소
+                     url:'/polaroid/checkPhone', //Controller에서 요청 받을 주소
                      data: JSON.stringify({
                        memberPhone : memberPhone,
                     }),

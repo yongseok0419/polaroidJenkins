@@ -202,7 +202,7 @@
          console.log("memberPwd : " , memberPwd);
          $.ajax({
                method: "POST",
-               url: "./changePwd",
+               url: "/polaroid/changePwd",
                data: JSON.stringify({
                   memberEmail : memberEmail,
                   memberPwd : memberPwd
@@ -212,9 +212,9 @@
                success: function(data){
                   if(data == "1") {
                 	 alert("비밀번호가 변경되었습니다.")
-                     location.href="/loginForm";
+                     location.href="/polaroid/loginForm";
                   } else {
-                     location.href="/modifyPwd";
+                     location.href="/polaroid/modifyPwd";
                      alert("변경실패");
                   }
                },
