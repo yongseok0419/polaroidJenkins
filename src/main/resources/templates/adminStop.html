@@ -61,7 +61,7 @@
 			                      </th:block>    
 			                      <th:block th:unless="${smpd.profileFileName == null}">
 	                                    <div class="profile-img">
-	                                      <img class="profile-img" th:src="@{'/upload/'+ ${mpd.profileFilePath} + '/' + ${mpd.profileFileUuid} + '_' + ${mpd.profileFileName}}" 
+	                                      <img class="profile-img" th:src="@{'/upload/'+ ${smpd.profileFilePath} + '/' + ${smpd.profileFileUuid} + '_' + ${smpd.profileFileName}}" 
 	                                                                style="width:100%;">
 	                                    </div>
                                   </th:block>
