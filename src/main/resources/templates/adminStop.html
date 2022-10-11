@@ -55,11 +55,11 @@
                               <input type="hidden" name="memberStopPeriod" th:value="${smpd.memberStopPeriod}">
                               <div class="toast-header">
                               
-                                <th:block th:if="${mpd.profileFileName == null}">
+                                <th:block th:if="${smpd.profileFileName == null}">
 			                        	<div class="profile-img" style="background: url(img/avatars/1.jpg) no-repeat center; background-size: cover;">
 										          </div>
 			                      </th:block>    
-			                      <th:block th:unless="${mpd.profileFileName == null}">
+			                      <th:block th:unless="${smpd.profileFileName == null}">
 	                                    <div class="profile-img">
 	                                      <img class="profile-img" th:src="@{'/upload/'+ ${mpd.profileFilePath} + '/' + ${mpd.profileFileUuid} + '_' + ${mpd.profileFileName}}" 
 	                                                                style="width:100%;">
