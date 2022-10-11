@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>오류</title>
 </head>
 <body>
-		<style>
-			*{padding:0;margin:0;}
-		</style>
-		<a th:href="@{index}"><img src="img/500.jpg" alt="500에러" usemap="#imgmap202210617515" id="img-detail-qa" class="img-detail-qa" style="width:100%"></a>
+    <h1>문제 발생</h1>
+    <h4 th:text="${exception.getMessage()}"></h4>
+    <ul>
+        <th:block th:each="stack : ${exception.getStackTrace()}">
+            <li th:text="${stack}"></li>
+        </th:block>
+    </ul>
 </body>
 </html>
