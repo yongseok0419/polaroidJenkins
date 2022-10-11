@@ -30,7 +30,7 @@ public class WebConfig implements WebMvcConfigurer {
         //업로드 파일처리
         registry
         		.addResourceHandler("/upload/**")
-        		.addResourceLocations("file:/usr/local/tomcat/upload");
+        		.addResourceLocations("file:/usr/local/tomcat/upload/");
         
 	}
 	
