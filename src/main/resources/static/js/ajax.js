@@ -419,7 +419,7 @@
                   htmlStr += "<a href='#' type='button' class='' data-bs-toggle='modal' data-bs-target='#modalScrollable' data-id=" + posts[i].post_id + ">";
                   htmlStr += "<div class='card-body contents-card'>";           
                   for(let j = 0; j < posts[i].uploads.length; j++){                       
-                    htmlStr += "<div class='contents-img' style=\"background:url('/upload/" + posts[i].uploads[j].upload_filepath + "/" + posts[i].uploads[j].upload_fileuuid + "_" + posts[i].uploads[j].upload_filename + "') no-repeat center; background-size: cover;\">";   
+                    htmlStr += "<div class='contents-img' style=\"background:url('upload/" + posts[i].uploads[j].upload_filepath + "/" + posts[i].uploads[j].upload_fileuuid + "_" + posts[i].uploads[j].upload_filename + "') no-repeat center; background-size: cover;\">";   
                     htmlStr += "<div class='hover-box'><i class='bx bxs-heart'><span id='postLikeCount2'></span></i>&nbsp;&nbsp;";
                     htmlStr += "<i class='bx bxs-chat'><span id='replyCount'></span></i>";
                     htmlStr += "</div></div>";
@@ -498,7 +498,7 @@
 
                 for (let i = 0; i < post.uploads.length; i++) {
                   htmlStr += "<div class='carousel-item active'>";
-                  htmlStr += "<img class='d-block w-100' src=@{'/upload/" + post.uploads[i].upload_filepath + "/" + post.uploads[i].upload_fileuuid + "_" + post.uploads[i].upload_filename + "\'} alt='Third slide'  />";
+                  htmlStr += "<img class='d-block w-100' src='upload/" + post.uploads[i].upload_filepath + "/" + post.uploads[i].upload_fileuuid + "_" + post.uploads[i].upload_filename + "\' alt='Third slide'  />";
                   htmlStr += "</div>";
                 }
 
