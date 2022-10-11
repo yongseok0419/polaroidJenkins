@@ -56,11 +56,11 @@
                                 <input type="hidden" name="memberNick" th:value="${mpd.memberNick}">
                                 <div class="toast-header">
                                 
-                                  <th:block th:if="${mpd.isProfile == 0}">
+                                  <th:block th:if="${mpd.profileFileName == null}">
 			                        	<div class="profile-img" style="background: url(img/avatars/1.jpg) no-repeat center; background-size: cover;">
 										          </div>
 			                      </th:block>    
-			                      <th:block th:if="${mpd.isProfile == 1}">
+			                      <th:block th:unless="${mpd.profileFileName == null}">
 	                                    <div class="profile-img">
 	                                      <img class="profile-img" th:src="@{'/upload/'+ ${mpd.profileFilePath} + '/' + ${mpd.profileFileUuid} + '_' + ${mpd.profileFileName}}" 
 	                                                                style="width:100%;">
