@@ -498,7 +498,7 @@
 
                 for (let i = 0; i < post.uploads.length; i++) {
                   htmlStr += "<div class='carousel-item active'>";
-                  htmlStr += "<img class='d-block w-100' src=@{'/upload/" + post.uploads[i].upload_filepath + "/" + post.uploads[i].upload_fileuuid + "_" + post.uploads[i].upload_filename + "}\'} alt='Third slide'  />";
+                  htmlStr += "<img class='d-block w-100' src='/upload/" + post.uploads[i].upload_filepath + "/" + post.uploads[i].upload_fileuuid + "_" + post.uploads[i].upload_filename + "}\' alt='Third slide'  />";
                   htmlStr += "</div>";
                 }
 
