@@ -498,7 +498,7 @@
 
                 for (let i = 0; i < post.uploads.length; i++) {
                   htmlStr += "<div class='carousel-item active'>";
-                  htmlStr += "<img class='d-block w-100' src='/upload/" + post.uploads[i].upload_filepath + "/" + post.uploads[i].upload_fileuuid + "_" + post.uploads[i].upload_filename + "\' alt='Third slide'  />";
+                  htmlStr += "<img class='d-block w-100' src=@{'/upload/" + post.uploads[i].upload_filepath + "/" + post.uploads[i].upload_fileuuid + "_" + post.uploads[i].upload_filename + "}\'} alt='Third slide'  />";
                   htmlStr += "</div>";
                 }
 
@@ -513,7 +513,7 @@
 
                 let htmlStr = "";
 
-                htmlStr += "<div class='profile-img' style='background: url(/img/avatars/1.jpg) no-repeat center; background-size: cover;'></div>";
+                htmlStr += "<div class='profile-img' style='background: url(img/avatars/1.jpg) no-repeat center; background-size: cover;'></div>";
                 htmlStr += "<div class='user_container'>";
                 htmlStr += "<div class='user_name'>";
                 htmlStr += "<div class='nick_name'>" + post.member_nick + "</div>";
@@ -577,7 +577,7 @@
 
                 for (let i = 0; i < replyList.length; i++) {
                   htmlStr += "<div class='admin_container' id=" + replyList[i].replyId + ">";
-                  htmlStr += "<div class= 'profile-img' style='background: url(/img/avatars/1.jpg) no-repeat center; background-size: cover;'></div>";
+                  htmlStr += "<div class= 'profile-img' style='background: url(img/avatars/1.jpg) no-repeat center; background-size: cover;'></div>";
                   
        /*            if (isProfile == 0) {
               alert("" + htmlStr);
