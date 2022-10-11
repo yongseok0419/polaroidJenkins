@@ -51,7 +51,7 @@ public class ScreenController {
 	//메인 화면
 	@GetMapping("/index")
 	public String index(Model model, HttpSession session, 
-			@RequestParam(name = "memberId", defaultValue = "0") int memberId) {
+			@RequestParam(name = "memberId", defaultValue = "0") int memberId)  throws Exception {
 		
 		//내 게시글 조회
 		if (memberId == 0) {
