@@ -536,6 +536,10 @@
                   htmlStr += "<button id='modifyBtn' type='button' class='btn btn-primary edit-btn modifyPost'><a style='color:white'>수정</a></button>";
                   htmlStr += "<button id='removeBtn' type='button' class='btn btn-primary delete-btn deletePost'><a style='color:white'>삭제</a></button>";
                 }
+                else if(memberNick == "adminNick"){     //관리자 닉네임경우
+                  htmlStr += "<button id='modifyBtn' type='button' class='btn btn-primary edit-btn modifyPost'><a style='color:white'>수정</a></button>";
+                  htmlStr += "<button id='removeBtn' type='button' class='btn btn-primary delete-btn deletePost'><a style='color:white'>삭제</a></button>";  
+                }
                 htmlStr += "</div>";
 
                 $('#btnCondition').html("");
@@ -596,6 +600,10 @@
                   console.log("현재 세션아이디: ", memberId);                  
                   
                   if (replyList[i].memberNick == memberNick) {
+                    htmlStr += "<a class='modComment'>수정</a>";
+                    htmlStr += "<a class='subComment'>삭제</a>";
+                  }
+                  else if(memberNick == "adminNick"){
                     htmlStr += "<a class='modComment'>수정</a>";
                     htmlStr += "<a class='subComment'>삭제</a>";
                   }
