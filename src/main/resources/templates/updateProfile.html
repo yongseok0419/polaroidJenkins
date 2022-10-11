@@ -52,7 +52,7 @@
                                      style="width:100%;">
                         </div>
                             </th:block> -->
-                               <img class="profile-img upload-thumb" th:src="'/upload/'+ ${mpd.profileFilePath} + '/' + ${mpd.profileFileUuid} + '_' + ${mpd.profileFileName}" 
+                               <img class="profile-img upload-thumb" th:src="@{'/upload/'+ ${mpd.profileFilePath} + '/' + ${mpd.profileFileUuid} + '_' + ${mpd.profileFileName}}" 
                             style="width:100%;">
                             
                             </span>
