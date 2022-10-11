@@ -120,7 +120,7 @@ public class ScreenController {
 
 	// 로그인 화면
 	@GetMapping("loginForm")
-	public String Login() {
+	public String loginForm() {
 		return "login";
 	}
 

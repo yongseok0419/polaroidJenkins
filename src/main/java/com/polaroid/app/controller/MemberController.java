@@ -182,9 +182,6 @@ public class MemberController {
 		@PostMapping("/joinForm")
 		public String joinForm(MemberDto memberDto) throws Exception {
 			
-			//500 Error 내기(시연)
-			//memberService = null;
-			
 			memberService.registerMember(memberDto);
 			
 			return "redirect:/loginForm";
