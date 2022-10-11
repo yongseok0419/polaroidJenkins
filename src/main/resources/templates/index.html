@@ -45,7 +45,7 @@
                       
                       <th:block th:unless="${session.mpd.profileFileName == null}">
                       	<div class="profile-img">
-	                        <img class="profile-img" th:src="'/polaroid/upload/'+ ${session.mpd.profileFilePath} + '/' + ${session.mpd.profileFileUuid} + '_' + ${session.mpd.profileFileName}" 
+	                        <img class="profile-img" th:src="'@{/upload/'+ ${session.mpd.profileFilePath} + '/' + ${session.mpd.profileFileUuid} + '_' + ${session.mpd.profileFileName}}" 
 	                      			style="width:100%;">
 						</div>
                       </th:block>
